@@ -1,0 +1,98 @@
+
+<div class="col-lg-12">
+  <div class="row">
+    <div class="offset-lg-3 col-lg-6">
+      <h1 class="text-center">Registration Form</h1>
+      <form [formGroup]="regForm" (ngSubmit)="register(regForm)">
+        <div class="form-group">
+          <label>Name</label>
+          <input type="text" class="form-control" formControlName="name" placeholder="Name">
+        </div>
+        <label class="error" *ngIf="regForm.controls.name.invalid && regForm.controls.name.touched">
+          please enter name
+        </label>
+        <div class="form-group">
+          <label>Username</label>
+          <input type="text" class="form-control" formControlName="username" placeholder="Username" (input)="validateUsername($event.target.value)">
+        </div>
+        <label class="error" *ngIf="regForm.controls.username.invalid && regForm.controls.username.touched">
+          please enter username
+        </label>
+        <span class="error" *ngIf="userNameError">user already exist!</span>
+
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" class="form-control" formControlName="email" placeholder="Email" (input)="validateEmail($event.target.value)">
+        </div>
+        <label class="error" *ngIf="regForm.controls.email.invalid && regForm.controls.email.touched">
+          please enter valid email
+        </label>
+        <span class="error" *ngIf="userEmailError">email already exist!</span>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="number" class="form-control" formControlName="phoneNumber" placeholder="Phone Number">
+        </div>
+        <label class="error" *ngIf="regForm.controls.phoneNumber.invalid && regForm.controls.phoneNumber.touched">
+          please enter user name
+        </label>
+
+        <div class="form-group">
+          <label>Address</label>
+          <textarea class="form-control" rows="3" formControlName="address" placeholder="Address"></textarea>
+        </div>
+        <label class="error" *ngIf="regForm.controls.address.invalid && regForm.controls.address.touched">
+          please enter address
+        </label>
+        <div class="form-group">
+          <label>Select Country</label>
+          <select class="form-control" formControlName="country" placeholder="Country" (change)="getState($event.target.value)">
+            <option [ngValue]="null" selected disabled> Select Country</option>
+            <option *ngFor="let curty of country">{{curty.country}}</option>
+          </select>
+        </div>
+        <label class="error" *ngIf="regForm.controls.country.invalid && regForm.controls.country.touched">
+          please enter address
+        </label>
+        <div class="form-group">
+          <label>Select State</label>
+          <select class="form-control" formControlName="state" placeholder="State">
+            <option [ngValue]="null" selected disabled> Select State</option>
+            <option *ngFor="let sate of states">{{sate}}</option>
+          </select>
+        </div>
+        <label class="error" *ngIf="regForm.controls.country.invalid && regForm.controls.country.touched">
+          please enter address
+        </label>
+        <div class="form-group">
+          <label>Select City</label>
+          <select class="form-control" formControlName="city" placeholder="city">
+            <option [ngValue]="null" selected disabled> Select City</option>
+            <option *ngFor="let city of cities">{{city}}</option>
+          </select>
+        </div>
+        <label class="error" *ngIf="regForm.controls.city.invalid && regForm.controls.city.touched">
+          please enter address
+        </label>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" class="form-control" formControlName="password" placeholder="Password">
+        </div>
+        <label class="error" *ngIf="regForm.controls.password.invalid && regForm.controls.password.touched">
+          Password must contain at least six characters!
+        </label>
+
+        <div class="form-group">
+          <label>Confirm Password</label>
+          <input type="password" class="form-control" formControlName="confirmPassword" placeholder="Confirm Password">
+        </div>
+        <label class="error" *ngIf="regForm.controls.confirmPassword.invalid && regForm.controls.confirmPassword.touched">
+          Passwords do not match
+        </label>
+        <div class="text-right mb-20">
+          <button type="submit" class="btn btn-primary px-4" [disabled]="regForm.invalid">Sign Up</button>
+          <button type="button" class="btn btn-default px-4" [routerLink]="['/']">Go to Login</button>
+        </div>        
+      </form>
+    </div>
+  </div>
+</div>

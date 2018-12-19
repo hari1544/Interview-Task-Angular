@@ -1,0 +1,26 @@
+<h1 class="text-center">Black Tulip Infotech</h1>
+<div class="col-lg-12"  *ngIf="userdata">
+  <div class="row">
+    <div class="col-lg-8">      
+    </div>
+    <div class="col-lg-4 text-right">
+      <button type="button" class="btn btn-primary active mt-3" (click)="logout()">
+        Logout
+      </button>
+    </div>
+  </div>
+  <div class="offset-lg-3 col-lg-6">
+    <div class="card">
+      <ul class="list-group list-group-flush text-uppercase">
+        <li class="list-group-item">Name:<span class="float-right">{{userdata.name}}</span></li>
+        <li class="list-group-item">Username:<span class="float-right">{{userdata.username}}</span></li>
+        <li class="list-group-item">Email:<span class="float-right">{{userdata.email}}</span></li>
+        <li class="list-group-item">Address:<span class="float-right">{{userdata.address}}</span></li>
+        <li class="list-group-item">Phone: <span class="float-right">{{userdata.phoneNumber}}</span></li>
+        <li class="list-group-item">Country:<span class="float-right">{{userdata.country}}</span></li>
+        <li class="list-group-item">State:<span class="float-right">{{userdata.state}}</span></li>
+        <li class="list-group-item">City:<span class="float-right">{{userdata.city}}</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
